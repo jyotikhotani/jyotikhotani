@@ -65,7 +65,7 @@ class _EditEmployeeDetailScreenState extends State<EditEmployeeDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Employee List"),
+          title: Text(" Edit Employee List"),
           automaticallyImplyLeading: false,
         ),
         body: Padding(

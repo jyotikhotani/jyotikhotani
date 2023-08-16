@@ -17,13 +17,15 @@ class EmployeeListScreen extends StatefulWidget {
 class _EmployeeListScreenState extends State<EmployeeListScreen> {
   List<Map<String, dynamic>> empMap = [];
   List<UserModel> empList = [];
+  // List<UserModel> previousEmpList = [];
+  // List<UserModel> currentEmpList = [];
   @override
   void initState() {
     getDataFromLocalStorage();
     super.initState();
   }
 
-  getDataFromLocalStorage() {
+  getDataFromLocalStorage() async {
     if (localStorageService.getuserDataFromDisk != null) {
       final employeeDetail = localStorageService.getuserDataFromDisk;
       for (var item in employeeDetail!) {
@@ -63,16 +65,18 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Current employees",
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                    fontSize: ScreenUtilWrapper.setResponsiveSize(14),
-                    color: Colors.blue),
-              ),
-            ),
+            empList.isNotEmpty
+                ? Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Current employees",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          fontSize: ScreenUtilWrapper.setResponsiveSize(14),
+                          color: Colors.blue),
+                    ),
+                  )
+                : Container(),
             SizedBox(
               height: 20,
             ),

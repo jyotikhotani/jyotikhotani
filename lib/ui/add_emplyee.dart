@@ -56,6 +56,9 @@ class _AddEmployeScreenState extends State<AddEmployeScreen> {
       jsonDataList = localStorageService.getuserDataFromDisk!;
       jsonDataList.add(jsonEncode(user));
       localStorageService.saveUserDataToDisk(jsonDataList);
+    } else {
+      jsonDataList.add(jsonEncode(user));
+      localStorageService.saveUserDataToDisk(jsonDataList);
     }
 
     setState(() {});
